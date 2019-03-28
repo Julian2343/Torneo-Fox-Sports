@@ -1,6 +1,6 @@
 package co.julian.domain;
 
-import java.sql.Array;
+
 import java.util.ArrayList;
 
 public class Fecha {
@@ -13,6 +13,7 @@ public class Fecha {
 		this.partidos = partidos;
 	}
 	
+	//almacenar todos los datos de los partidos jugados por fecha
 	public void alamacenarDatosFecha(Fecha fecha) {
 		partidos = fecha.partidos;
 		for (int i = 0; i < partidos.size(); i++) {

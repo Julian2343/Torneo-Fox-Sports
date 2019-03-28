@@ -1,6 +1,8 @@
 package co.julian.domain;
 
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Torneo {
 	private String nombre;
@@ -12,27 +14,9 @@ public class Torneo {
 		this.nombre = nombre;
 	}
 
-	
 	//metodos
 	
-	public void tablaPosiciones(ArrayList<Equipo> equipos) {
-		ArrayList<Equipo> posiciones = new ArrayList<Equipo>();
-		int puntosEquipo;
-		int mayor;
-		for (int i = 0; i < equipos.size(); i++) {
-			mayor = equipos.get(i).getPuntos();
-			
-			if (equipos.get(i).getPuntos() > mayor) {
-				mayor = equipos.get(i).getPuntos();
-			}else {
-				if (equipos.get(i).getPuntos() < mayor) {
-					mayor = mayor;
-				}
-			}
-			
-			
-		}
-	}
+	//saber resultados de partidos por fecha
 	public void partidosFechaResultados(Fecha fecha) {
 		ArrayList<String> PartidosJugados = new ArrayList<String>();
 		ArrayList<Partido> partidos = fecha.getPartidos();
@@ -67,6 +51,7 @@ public class Torneo {
 		}
 	}
 	
+	//obtener la lista de los equipos
 	public ArrayList<String> obtenerListaDeEquipos(ArrayList<Equipo> equipos) {
 		ArrayList<String> nombresEquiposTorneo = new ArrayList<String>();
 		String nombreEquipo;
@@ -76,6 +61,28 @@ public class Torneo {
 		}
 		return nombresEquiposTorneo;
 	}
+	
+	//metodo de tabla de posiciones
+	public ArrayList<String> tablaPosiciones(ArrayList<Equipo> equipos) {
+		ArrayList<String> posiciones = new ArrayList<String>();
+		ArrayList<Integer> puntos = new ArrayList<Integer>();
+		int puntosPorEquipo;
+		for (int i = 0; i < equipos.size(); i++) {
+			puntosPorEquipo = equipos.get(i).getPuntos();
+			puntos.add(puntosPorEquipo);
+		}
+		Collections.sort(puntos, Collections.reverseOrder());
+		
+		for (int i = 0; i < puntos.size(); i++) {
+			for (int j = 0; j < equipos.size(); j++) {
+				if (equipos.get(j).getPuntos() == puntos.get(i)) {
+					posiciones.add(equipos.get(j).getNombre());
+				}
+			}
+			
+		}return posiciones;
+	}
+	
 	//getters and setters
 	public ArrayList<Fecha> getFechas() {
 		return fechas;

@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//Jugador
+		//Jugadores
 		
 			//nacional
 		Jugador christianVargas = new Jugador("Christian Vargas", "Portero");
@@ -87,36 +87,39 @@ public class Main {
 		Jugador diegoHerazo = new Jugador("Diego Herazo", "Delantero centro");
 		Jugador leonardoCastro = new Jugador("Leonardo Castro", "Delantero centro");
 		
+			//listas de jugadores
 		ArrayList<Jugador> jugadoresNacional = new ArrayList<Jugador>(Arrays.asList(christianVargas, joseCuadrado , davidAgudelo, carlosCuesta ,alexisHenriquez, brayanCordoba, andresReyes, sebastianYabur, aldoLeaoRamirez, juanPabloRamirez, omarDuarte, andresSarmiento, yersonCandelo, jeisonLucumi, hernanBarcos, carlosRivas));
 		ArrayList<Jugador> jugadoresMillonarios = new ArrayList<Jugador>(Arrays.asList(wuilkerFariñez, ramiroSanchez , LuisPayares, matiasdeLosSantos ,omarBertel, andresFelipeRoman, jhonDuque, juanGarcia, juanDominguez, felipeJaramillo, santiagoMontoya, christianMarrugo, orlesAragon, christianHurfano, carlosLopez, jorgeRengifo));
 		ArrayList<Jugador> jugadoresSantafe = new ArrayList<Jugador>(Arrays.asList(leandroCastellanos, geovanniBanguera , carlosHenao, joseMoya , andresPerez, yonatanMurillo, carlosArboleda, jhonJairoVelasquez, carlosPolo, baldomeroPerlaza, mateoCardona, fabioBurbano, jorgeAguirre, ArleyRodriguez, BrayanPerea, camiloRosero));
 		ArrayList<Jugador> jugadoresMedellin = new ArrayList<Jugador>(Arrays.asList(davidGonzalez, andresMosquera , yimyGomez, jesusMurillo , hectorUrrego, nicolasPalacios, guillermoTegue, wilsonLopez, williamParra, juanManuelCuesta, larryAngulo, yorleysMena, alejandroBarbaro, williamPalacios, diegoHerazo, leonardoCastro));
 		
-		//Equipo
+		//Equipos
 		Equipo nacional = new Equipo("Atletico Nacional", jugadoresNacional);
 		Equipo millonarios = new Equipo("Millonarios FC", jugadoresMillonarios);
 		Equipo santafe = new Equipo("Independiente Santa Fe", jugadoresSantafe);
-		Equipo medellin = new Equipo("Independiente Medellin", jugadoresMedellin);	
+		Equipo medellin = new Equipo("Independiente Medellin", jugadoresMedellin);
+		
+			//Lista de equipos
 		ArrayList<Equipo> equiposTorneo = new ArrayList<Equipo>(Arrays.asList(nacional, millonarios, santafe, medellin));
 		
-		//Partido
+		//Partidos
 		
-		//1er dia
-		Partido nacionalVSmillonarios = new Partido("Atletico Nacional VS Millonarios FC", nacional, millonarios, 3, 3 );
-		Partido medellinVSsantafe = new Partido("Independiente Medellin VS Independiente Santa Fe", medellin, santafe, 2, 4);
+		 //1er fecha
+		Partido nacionalVSmillonarios = new Partido("Atletico Nacional VS Millonarios FC", nacional, millonarios, 4, 3 );
+		Partido medellinVSsantafe = new Partido("Independiente Medellin VS Independiente Santa Fe", medellin, santafe, 4, 4);
 		ArrayList<Partido> partidosFecha1 = new ArrayList<Partido>(Arrays.asList(nacionalVSmillonarios, medellinVSsantafe));
 		
-		//2do dia
-		Partido nacionalVSmedellin = new Partido("Atletico Nacional VS Independiente Medellin", nacional, medellin, 4, 3 );
-		Partido millonariosVSsantafe = new Partido("Millonarios FC VS Independiente Santa Fe", millonarios, santafe, 5, 4);
+		 //2da fecha
+		Partido nacionalVSmedellin = new Partido("Atletico Nacional VS Independiente Medellin", nacional, medellin, 2, 3 );
+		Partido millonariosVSsantafe = new Partido("Millonarios FC VS Independiente Santa Fe", millonarios, santafe, 2, 4);
 		ArrayList<Partido> partidosFecha2 = new ArrayList<Partido>(Arrays.asList(nacionalVSmedellin, millonariosVSsantafe));
 		
-		//3er dia
-		Partido nacionalVSsantafe = new Partido("Atletico Nacional VS Independiente Santa Fe", nacional, santafe, 3, 5 );
-		Partido medellinVSmillonarios = new Partido("Independiente Medellin VS Millonarios FC", medellin, millonarios, 4, 3);
+		 //3er fecha
+		Partido nacionalVSsantafe = new Partido("Atletico Nacional VS Independiente Santa Fe", nacional, santafe, 3, 2 );
+		Partido medellinVSmillonarios = new Partido("Independiente Medellin VS Millonarios FC", medellin, millonarios, 3, 3);
 		ArrayList<Partido> partidosFecha3 = new ArrayList<Partido>(Arrays.asList(nacionalVSsantafe, medellinVSmillonarios));
 		
-		//Fecha
+		//Fechas
 		Fecha fecha1 = new Fecha("3 de junio del 2019", partidosFecha1);
 		Fecha fecha2 = new Fecha("4 de junio del 2019", partidosFecha2);
 		Fecha fecha3 = new Fecha("5 de junio del 2019", partidosFecha3);
@@ -127,22 +130,25 @@ public class Main {
 	
 		
 		//Torneo
-		Torneo copaAlpinito = new Torneo("Copa Alpinito");
-		copaAlpinito.setEquipos(equiposTorneo);
+		Torneo FoxSports = new Torneo("Copa Alpinito");
+		FoxSports.setEquipos(equiposTorneo);
 		
+		System.out.println("Los equipos que participaron en el torneo fueron: " + FoxSports.obtenerListaDeEquipos(equiposTorneo) +  "\n");
 		
-		System.out.println("Los equipos que participaron en el torneo fueron: " + copaAlpinito.obtenerListaDeEquipos(equiposTorneo) +  "\n");
-		copaAlpinito.partidosFechaResultados(fecha1);
+		//pruebas partidos que se jugaron en una fecha con sus resultados
+		FoxSports.partidosFechaResultados(fecha1);
 		System.out.println("\n");
-		copaAlpinito.partidosFechaResultados(fecha2);
+		FoxSports.partidosFechaResultados(fecha2);
 		System.out.println("\n");
-		copaAlpinito.partidosFechaResultados(fecha3);
+		FoxSports.partidosFechaResultados(fecha3);
 		System.out.println("\n");
 		
+		//pruebas jugadores que comparten una misma posicion de un equipo
 		System.out.println("Los jugadores " + nacional.jugadoresCompartenPosicionPorEquipo("Portero") + " comparten la misma posicion" + "\n");
 		System.out.println("Los jugadores " + millonarios.jugadoresCompartenPosicionPorEquipo("Defensa central") + " comparten la misma posicion" + "\n");
 		
-		
+		//prueba tabla de posiciones ordenas por sus puntos (recordar que cada victoria daba 3 puntos y si era empate 1 punto para cada equipo)
+		System.out.println("La tabla de posiciones quedo de la siguiente manera: " + FoxSports.tablaPosiciones(equiposTorneo));
 		
 		
 

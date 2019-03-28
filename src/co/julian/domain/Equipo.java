@@ -12,12 +12,12 @@ public class Equipo {
 	public Equipo(String nombre, ArrayList<Jugador> jugadores) {
 		this.nombre = nombre;
 		this.jugadores = jugadores;
-		
 	}
 
 	
 	//metodos
 	
+	//saber que jugadores comparten una misma posicion por equipo
 	public ArrayList<String> jugadoresCompartenPosicionPorEquipo(String posicionAConsultar){
 		ArrayList<String> jugadoresMismaPosicion = new ArrayList<String>();
 		String posicionJugador;
